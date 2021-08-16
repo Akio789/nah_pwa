@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
-import { fetchVocalecciones } from './api/fetchVocalecciones';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Home from './displays/Home/Home';
+import Login from './displays/Login/Login';
+
 const App = () => {
-    const [ vocaleccion, setVocaleccion ] = useState('');
-    const getVocaleccion = async (e) => {
-        if(e.key === 'Enter'){
-            const { data , status } = await fetchVocalecciones()
-            const indexVocaleccion = Math.random() * (50 - 1) + 1
-            console.log(data[6])
-        }
-    }
-    return (
-        <div>
-            <h1> N A H</h1>
-            <input
-                type="text"
-                onChange={(e) => setVocaleccion(e.target.value)}
-                onKeyPress={getVocaleccion}
-             ></input>
-        </div>
-    );
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Login />
+        </Route>
+        <Route path="/home">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
 export default App;
