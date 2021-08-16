@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { useState } from 'react';
+import { fetchVocalecciones } from './api/fetchVocalecciones';
+const App = () => {
+    const [ vocaleccion, setVocaleccion ] = useState('');
+    const getVocaleccion = async (e) => {
+        if(e.key === 'Enter'){
+            const { data , status } = await fetchVocalecciones()
+            const indexVocaleccion = Math.random() * (50 - 1) + 1
+            console.log(data[6])
+        }
+    }
+    return (
+        <div>
+            <h1> N A H</h1>
+            <input
+                type="text"
+                onChange={(e) => setVocaleccion(e.target.value)}
+                onKeyPress={getVocaleccion}
+             ></input>
+        </div>
+    );
 }
 
 export default App;
