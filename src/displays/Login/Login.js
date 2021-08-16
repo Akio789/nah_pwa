@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 
 import styles from './Login.module.css'
 
+import { Button } from 'react-bootstrap'
+
 const Login = () => {
   const { push } = useHistory();
 
@@ -14,7 +16,7 @@ const Login = () => {
   return (
     <div>
       <h1>Login</h1>
-      <button className={styles.test} onClick={onLoginClicked}>Login</button>
+      <Button className={styles.test} onClick={onLoginClicked}>Login</Button>
     </div>
   )
 };
