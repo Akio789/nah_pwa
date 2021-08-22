@@ -7,12 +7,12 @@ import {
 
 import Home from './displays/Home/Home';
 import Login from './displays/Login/Login';
-import Navbar from './components/Navbar/Navbar';
+import Header from './components/Header/Header';
 
 const App = () => {
   return (
     <Router>
-        <Navbar />
+        <Header />
       <Switch>
         <Route exact path="/">
           <Login />
