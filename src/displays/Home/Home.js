@@ -7,7 +7,7 @@ import { fetchVocalecciones } from '../../api/fetchVocalecciones';
 import fontNAH from '../../assets/IMG_0635.png';
 import styles from './Home.module.css'
 import mexIMG from '../../assets/export3.png';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -32,13 +32,17 @@ const Home = () => {
     setActiveStep(0);
   };
 
-  const getVocaleccion = async (e) => {
+  const getVocaleccion = async () => {
     const min = 1;
-    const max = 2;
+    const max = 3;
     const rand = Math.floor(Math.random() * (max - min)) + min;
     const { data } = await fetchVocalecciones(rand)
     setVocaleccion(data)
   }
+
+  useEffect(() => {
+    getVocaleccion()
+  }, [])
 
   const getLeccion = (e) => {
     switch (e) {
@@ -55,7 +59,7 @@ const Home = () => {
 
 
   return (
-    <div className={styles.home} onLoad={getVocaleccion}>
+    <div className={styles.home}>
       <img src={fontNAH} alt="Logo Nah" height="40" className={styles.centerImage}></img>
       <h1 className="text-center"> B I E N V E N I D O </h1>
       <img src={mexIMG} alt="Logo Nah" className={styles.leftImage}></img>
