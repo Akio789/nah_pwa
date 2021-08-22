@@ -7,10 +7,12 @@ import {
 
 import Home from './displays/Home/Home';
 import Login from './displays/Login/Login';
+import Navbar from './components/Navbar/Navbar';
 
 const App = () => {
   return (
     <Router>
+        <Navbar />
       <Switch>
         <Route exact path="/">
           <Login />

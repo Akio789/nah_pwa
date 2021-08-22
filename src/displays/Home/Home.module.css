@@ -1,0 +1,65 @@
+.home{
+    background-color: antiquewhite;
+}
+
+.centerImage{
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 80px;
+}
+
+.leftImage{
+    text-align:left;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 50px;
+}
+
+.rightImage{
+    text-align: right;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 60px;
+}
+
+/*
+*   Estilos de Cards
+*/
+
+.cardTitle{
+    color: brown;
+    font-size: 34px;
+}
+
+.cardSubtitle{
+    color:crimson;
+    font-size: 16px;
+}
+
+/*
+*   Estilos de Task Manager
+*/
+
+.rootTaskManager{
+    width: 100%;
+}
+
+.buttonTaskManager{
+    margin-top: 5% ;
+    margin-right: 5% ;
+}
+
+.actionsTaskManager{
+    margin-bottom: 10%;
+}
+
+.reseterTaskManager{
+    padding: 3%;
+}
