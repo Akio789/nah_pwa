@@ -33,11 +33,11 @@ const Home = () => {
   };
 
   const getVocaleccion = async (e) => {
-      const { data, status } = await fetchVocalecciones()
-      const min = 1;
-      const max = 21;
-      const rand = Math.floor(Math.random() * (max - min)) + min;
-      setVocaleccion(data[rand])
+    const min = 1;
+    const max = 2;
+    const rand = Math.floor(Math.random() * (max - min)) + min;
+    const { data } = await fetchVocalecciones(rand)
+    setVocaleccion(data)
   }
 
   const getLeccion = (e) => {
@@ -56,7 +56,7 @@ const Home = () => {
 
   return (
     <div className={styles.home} onLoad={getVocaleccion}>
-      <img src={fontNAH}  alt="Logo Nah" height="40" className={styles.centerImage}></img>
+      <img src={fontNAH} alt="Logo Nah" height="40" className={styles.centerImage}></img>
       <h1 className="text-center"> B I E N V E N I D O </h1>
       <img src={mexIMG} alt="Logo Nah" className={styles.leftImage}></img>
       <Card>
@@ -68,21 +68,21 @@ const Home = () => {
             Adjetivo
           </p>
           <h2>
-            { vocaleccion.nahuatl }
+            {vocaleccion.nahuatl}
             <br />
           </h2>
           <h2>
-            { vocaleccion.español }
+            {vocaleccion.spanish}
             <br />
           </h2>
-          </CardContent>
-            <CardActions>
-              <Button>Ir a Glosario</Button>
-            </CardActions>
-      </Card> 
+        </CardContent>
+        <CardActions>
+          <Button>Ir a Glosario</Button>
+        </CardActions>
+      </Card>
 
       <h1 className="text-center" >L E C C I O N E S</h1>
-      <img src={agIMG} alt="Logo Nah"  className={styles.rightImage}></img>
+      <img src={agIMG} alt="Logo Nah" className={styles.rightImage}></img>
 
       <div className={styles.rootTaskManager}>
         <Stepper activeStep={activeStep} orientation="vertical">
