@@ -8,6 +8,7 @@ import {
 import Home from './displays/Home/Home';
 import Login from './displays/Login/Login';
 import Header from './components/Header/Header';
+import ProtectedRoute from "./components/Auth/ProtectedRoute";
 
 const App = () => {
   return (
@@ -17,9 +18,7 @@ const App = () => {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route path="/home">
-          <Home />
-        </Route>
+        <ProtectedRoute path='/home' component={Home} />
       </Switch>
     </Router>
   )
