@@ -12,7 +12,7 @@ import Header from './components/Header/Header';
 const App = () => {
   return (
     <Router>
-        <Header />
+      <Header />
       <Switch>
         <Route exact path="/">
           <Login />
