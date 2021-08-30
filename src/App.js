@@ -5,15 +5,10 @@ import {
   Route
 } from "react-router-dom";
 
-import Amplify from 'aws-amplify';
-import awsconfig from './aws-exports';
-
 import Home from './displays/Home/Home';
 import Login from './displays/Login/Login';
 import Header from './components/Header/Header';
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
-
-Amplify.configure(awsconfig);
 
 const App = () => {
   return (
@@ -29,4 +24,4 @@ const App = () => {
   )
 }
 
-export default withAuthenticator(App);
+export default App;
