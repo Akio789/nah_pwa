@@ -11,9 +11,16 @@ import Header from './components/Header/Header';
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
 
 const App = () => {
+  const renderHeader = () => {
+    if (window.location.pathname === '/') {
+      return;
+    }
+    return <Header />;
+  };
+
   return (
     <Router>
-      <Header />
+      {renderHeader()}
       <Switch>
         <Route exact path="/">
           <Login />
