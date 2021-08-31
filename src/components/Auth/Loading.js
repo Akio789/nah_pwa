@@ -6,7 +6,7 @@ const Loading = () => {
   return (
     <div className={styles.loader}>
       <Spinner animation="border" variant="primary" className='mb-2' />
-      <h3>Loading...</h3>
+      <h3>Cargando...</h3>
     </div>
   )
 };
