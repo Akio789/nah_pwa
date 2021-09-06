@@ -27,7 +27,7 @@ const App = () => {
           <Login />
         </Route>
         <ProtectedRoute path='/home' component={Home} />
-        <Route path='/codex' component={Codex} />
+        <Route path='/codex/:id' component={Codex} />
       </Switch>
     </Router>
   )
