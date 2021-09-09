@@ -34,7 +34,7 @@ const Home = () => {
 
   const getVocaleccion = async () => {
     const min = 1;
-    const max = 3;
+    const max = 50;
     const rand = Math.floor(Math.random() * (max - min)) + min;
     const { data } = await fetchVocalecciones(rand)
     setVocaleccion(data)

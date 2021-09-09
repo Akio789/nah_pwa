@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Home from './displays/Home/Home';
+import Codex from './displays/Codex/Codex';
 import Login from './displays/Login/Login';
 import Header from './components/Header/Header';
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
@@ -29,6 +30,7 @@ const App = () => {
           <Lecciones />
         </Route>
         <ProtectedRoute path='/home' component={Home} />
+        <Route path='/codex/:id' component={Codex} />
       </Switch>
     </Router>
   )
