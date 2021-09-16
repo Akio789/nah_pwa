@@ -6,7 +6,7 @@ const TestAudio = () => {
     <div>
       <GlossaryItem
         spanish='algo en español'
-        nuahuatl='algo en nahuatl'
+        nahuatl='algo en nahuatl'
         audio_url='https://nah-vocab-audios.s3.us-east-2.amazonaws.com/Mal%C3%ADntzin.m4a'
       />
     </div>
