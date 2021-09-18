@@ -11,7 +11,10 @@ import Login from './displays/Login/Login';
 import Header from './components/Header/Header';
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import Lecciones from './displays/Lecciones/Lecciones';
+import TestAudio from './displays/TestAudio';
+
 const App = () => {
+
   const renderHeader = () => {
     if (window.location.pathname === '/') {
       return;
@@ -31,6 +34,9 @@ const App = () => {
         </Route>
         <ProtectedRoute path='/home' component={Home} />
         <Route path='/codex/:id' component={Codex} />
+        <Route path='/test'>
+          <TestAudio />
+        </Route>
       </Switch>
     </Router>
   )
