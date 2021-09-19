@@ -10,6 +10,7 @@ import Codex from './displays/Codex/Codex';
 import Login from './displays/Login/Login';
 import Header from './components/Header/Header';
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
+import Lecciones from './displays/Lecciones/Lecciones';
 import TestAudio from './displays/TestAudio';
 
 const App = () => {
@@ -27,6 +28,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Login />
+        </Route>
+        <Route exact path="/lecciones">
+          <Lecciones />
         </Route>
         <ProtectedRoute path='/home' component={Home} />
         <Route path='/codex/:id' component={Codex} />
