@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,14 +12,25 @@ import Header from './components/Header/Header';
 import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import Lecciones from './displays/Lecciones/Lecciones';
 import TestAudio from './displays/TestAudio';
+import { getLatestLesson } from './api/latestLesson';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const App = () => {
+  const [latestLesson, setLatestLesson] = useState(1);
+  const { user } = useAuth0();
+
+  useEffect(() => {
+    if (user) {
+      getLatestLesson(user.email)
+        .then(({ latest_lesson }) => setLatestLesson(latest_lesson))
+    }
+  }, [user])
 
   const renderHeader = () => {
     if (window.location.pathname === '/') {
       return;
     }
-    return <Header />;
+    return <Header latestLesson={latestLesson} />;
   };
 
   return (
@@ -29,14 +40,10 @@ const App = () => {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/lecciones">
-          <Lecciones />
-        </Route>
-        <ProtectedRoute path='/home' component={Home} />
-        <Route path='/codex/:id' component={Codex} />
-        <Route path='/test'>
-          <TestAudio />
-        </Route>
+        <ProtectedRoute path="/lecciones/:latestLesson" component={Lecciones} />
+        <ProtectedRoute path='/home' component={() => <Home latestLesson={latestLesson} />} />
+        <ProtectedRoute path='/codex/:id' component={Codex} />
+        <ProtectedRoute path='/test' component={TestAudio} />
       </Switch>
     </Router>
   )
