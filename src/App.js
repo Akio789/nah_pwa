@@ -34,6 +34,7 @@ const App = () => {
     return <Header latestLesson={latestLesson} />;
   };
 
+  
   return (
     <Router>
       {renderHeader()}
