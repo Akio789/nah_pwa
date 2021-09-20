@@ -29,9 +29,7 @@ const App = () => {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/lecciones">
-          <Lecciones />
-        </Route>
+        <Route path='/lecciones' component={Lecciones} />
         <ProtectedRoute path='/home' component={Home} />
         <Route path='/codex/:id' component={Codex} />
         <Route path='/test'>
