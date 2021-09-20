@@ -41,7 +41,7 @@ const App = () => {
           <Login />
         </Route>
         <ProtectedRoute path="/lecciones/:latestLesson" component={Lecciones} />
-        <ProtectedRoute path='/home' component={Home} />
+        <ProtectedRoute path='/home' component={() => <Home latestLesson={latestLesson} />} />
         <ProtectedRoute path='/codex/:id' component={Codex} />
         <ProtectedRoute path='/test' component={TestAudio} />
       </Switch>
