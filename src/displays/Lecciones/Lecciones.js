@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react'
 import styles from './Lecciones.module.css';
 import fontNAH from '../../assets/IMG_0635.png';
@@ -50,10 +51,12 @@ function a11yProps(index) {
 
 
 const Lecciones = () => {
+  const { latestLesson } = useParams();
+
   // Variable que marca el index donde se encuentra actual el usuario.
   const [value, setValue] = React.useState(0);
   // Variables para vocabulario, gramática y ejercicios a cargar por lección.
-  const [selectedLessonId, setSelectedLessonId] = React.useState(null);
+  const [selectedLessonId, setSelectedLessonId] = React.useState(latestLesson);
   const [lecciones, setLecciones] = React.useState([]);
   const [nombresLecciones, setNombresLecciones] = React.useState([]);
   const [resumenLeccion, setResumenLeccion] = React.useState('El sistema de escritura es variado entre las diversas formas que se han intentado para llevar el náhuatl hablado a la escritura. En este sistema se intentará tomar el sistema ortográfico ideado por la SEP para la alfabetización de la lengua. El nahualt, hace uso de 18 sonidos y todas las palabras llevarán el acento en la penúltima sílaba (graves) solo con fines didácticos en algunas palabras, sin embargo es importante recordar la entonación, pues en las lecciones posteriores no se utilizará.');
@@ -93,9 +96,10 @@ const Lecciones = () => {
       <img src={fontNAH} alt="Logo Nah" height="40" className={styles.centerImage}></img>
       <h1 className="text-center"> L E C C I O N E S </h1>
       <div>
-        <select name="" id="" class="form-control" onChange={onLessonSelected}>
+        <select class="form-control" onChange={onLessonSelected}>
           {nombresLecciones.reverse().map(function ({ id, name }) {
-            return <option key={id} value={id}>{name}</option>
+            const isSelected = id === parseInt(latestLesson);
+            return <option key={id} value={id} selected={isSelected}>{name}</option>
           })}
         </select>
       </div>
