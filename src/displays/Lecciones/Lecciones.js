@@ -126,6 +126,7 @@ const Lecciones = () => {
         <div dangerouslySetInnerHTML={createMarkup(lecciones.grammar)} />
       </TabPanel>
       <TabPanel value={value} index={2}>
+
       </TabPanel>
       <TabPanel value={value} index={3}>
         Ayuda
