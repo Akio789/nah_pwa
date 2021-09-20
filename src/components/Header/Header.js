@@ -18,7 +18,7 @@ const Header = ({ latestLesson }) => {
                         <Nav.Link href="#link">Códices</Nav.Link>
                         <Nav.Link href="#link">Mapas</Nav.Link>
                         <Nav.Link href="#link">ML</Nav.Link>
-                        <Nav.Link href="#link">Glorario</Nav.Link>
+                        <Nav.Link href="/dictionary">Diccionario</Nav.Link>
                     </Nav>
                     <Nav>
                         <LogoutButton />
