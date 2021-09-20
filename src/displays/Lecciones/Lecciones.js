@@ -66,6 +66,7 @@ const Lecciones = () => {
 
   useEffect(() => {
     fetchLesson(selectedLessonId).then((data) => {
+        console.log(data)
         setLecciones(data)
     })
   }, [selectedLessonId]);
@@ -116,6 +117,7 @@ const Lecciones = () => {
       <div dangerouslySetInnerHTML={ createMarkup(lecciones.grammar) } />
       </TabPanel>
       <TabPanel value={value} index={2}>
+          
       </TabPanel>
       <TabPanel value={value} index={3}>
         Ayuda
