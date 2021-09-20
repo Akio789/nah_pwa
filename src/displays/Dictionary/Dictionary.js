@@ -28,7 +28,7 @@ const Dictionary = () => {
 
   const renderDictionaryItems = () => {
     return queryResult.map((item, i) => {
-      return <DictionaryItem grayBg={i % 2 === 1} item={item} />
+      return <DictionaryItem key={i} grayBg={i % 2 === 1} item={item} />
     })
   }
 
