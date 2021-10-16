@@ -1,11 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logoNAH from '../../assets/export.png';
 import styles from './Header.module.css';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import LogoutButton from '../../components/Auth/LogoutButton'
+import { getLatestLesson } from '../../api/latestLesson';
 
-const Header = ({ latestLesson }) => {
+const Header = () => {
+    const [latestLesson, setLatestLesson] = useState(1);
+    const user = JSON.parse(localStorage.getItem('user'));
+    useEffect(() => {
+        if (user) {
+            getLatestLesson(user.email)
+                .then(({ latest_lesson }) => setLatestLesson(latest_lesson))
+        }
+    }, [user])
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>

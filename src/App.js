@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from "react-router-dom";
 
 import Home from './displays/Home/Home';
@@ -14,19 +14,8 @@ import Lecciones from './displays/Lecciones/Lecciones';
 import TestAudio from './displays/TestAudio';
 import Dictionary from './displays/Dictionary/Dictionary';
 import Register from './displays/Register/Register';
-import { getLatestLesson } from './api/latestLesson';
 
 const App = () => {
-  const [latestLesson, setLatestLesson] = useState(1);
-  const user = JSON.parse(localStorage.getItem('user'));
-
-  useEffect(() => {
-    if (user) {
-      getLatestLesson(user.email)
-        .then(({ latest_lesson }) => setLatestLesson(latest_lesson))
-    }
-  }, [user])
-
   return (
     <Router>
       <Switch>
@@ -37,9 +26,9 @@ const App = () => {
           <Register />
         </Route>
         <>
-          <Header latestLesson={latestLesson} />
+          <Header />
           <ProtectedRoute path="/lecciones/:latestLesson" component={Lecciones} />
-          <ProtectedRoute path='/home' component={() => <Home latestLesson={latestLesson} />} />
+          <ProtectedRoute path='/home' component={() => <Home />} />
           <ProtectedRoute path='/codex/:id' component={Codex} />
           <ProtectedRoute path='/test' component={TestAudio} />
           <ProtectedRoute path='/dictionary' component={Dictionary} />

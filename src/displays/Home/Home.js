@@ -8,9 +8,18 @@ import styles from './Home.module.css'
 import mexIMG from '../../assets/export3.png';
 import React, { useState, useEffect } from 'react';
 import Lessons from './Lessons';
+import { getLatestLesson } from '../../api/latestLesson';
 
-const Home = ({ latestLesson }) => {
+const Home = () => {
+  const [latestLesson, setLatestLesson] = useState(1);
   const [vocaleccion, setVocaleccion] = useState('');
+  const user = JSON.parse(localStorage.getItem('user'));
+  useEffect(() => {
+    if (user) {
+      getLatestLesson(user.email)
+        .then(({ latest_lesson }) => setLatestLesson(latest_lesson))
+    }
+  }, [user])
 
   const getVocaleccion = async () => {
     const min = 1;
