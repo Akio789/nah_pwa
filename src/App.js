@@ -13,12 +13,12 @@ import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import Lecciones from './displays/Lecciones/Lecciones';
 import TestAudio from './displays/TestAudio';
 import Dictionary from './displays/Dictionary/Dictionary';
+import Register from './displays/Register/Register';
 import { getLatestLesson } from './api/latestLesson';
-import { useAuth0 } from '@auth0/auth0-react';
 
 const App = () => {
   const [latestLesson, setLatestLesson] = useState(1);
-  const { user } = useAuth0();
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     if (user) {
@@ -27,25 +27,23 @@ const App = () => {
     }
   }, [user])
 
-  const renderHeader = () => {
-    if (window.location.pathname === '/') {
-      return;
-    }
-    return <Header latestLesson={latestLesson} />;
-  };
-
   return (
     <Router>
-      {renderHeader()}
       <Switch>
         <Route exact path="/">
           <Login />
         </Route>
-        <ProtectedRoute path="/lecciones/:latestLesson" component={Lecciones} />
-        <ProtectedRoute path='/home' component={() => <Home latestLesson={latestLesson} />} />
-        <ProtectedRoute path='/codex/:id' component={Codex} />
-        <ProtectedRoute path='/test' component={TestAudio} />
-        <ProtectedRoute path='/dictionary' component={Dictionary} />
+        <Route exact path="/register">
+          <Register />
+        </Route>
+        <>
+          <Header latestLesson={latestLesson} />
+          <ProtectedRoute path="/lecciones/:latestLesson" component={Lecciones} />
+          <ProtectedRoute path='/home' component={() => <Home latestLesson={latestLesson} />} />
+          <ProtectedRoute path='/codex/:id' component={Codex} />
+          <ProtectedRoute path='/test' component={TestAudio} />
+          <ProtectedRoute path='/dictionary' component={Dictionary} />
+        </>
       </Switch>
     </Router>
   )

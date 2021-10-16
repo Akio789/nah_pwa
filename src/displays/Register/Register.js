@@ -1,35 +1,35 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
-import styles from './Login.module.css';
-import { login } from '../../api/auth';
+import styles from './Register.module.css';
+import { register } from '../../api/auth';
 import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+const Register = () => {
   const { push } = useHistory();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [showAlert, setShowAlert] = useState(false)
+  const [showAlert, setShowAlert] = useState(null)
 
   const setUser = (user) => {
-    if (user === "Incorrect credentials") {
-      setShowAlert(true);
+    if (user === "Email already in use") {
+      setShowAlert('El correo ya está en uso');
       return;
     }
     localStorage.setItem("user", JSON.stringify(user));
     push('/home');
   }
 
-  const onLogin = () => {
+  const onRegister = () => {
     if (email === '' || password === '') {
-      setShowAlert(true);
+      setShowAlert('Credenciales inválidas');
       return;
     }
-    login(email, password)
+    register(email, password)
       .then((data) => setUser(data))
   };
 
-  const sendToRegister = () => {
-    push('/register');
+  const sendToLogin = () => {
+    push('/');
   }
 
   return (
@@ -37,7 +37,7 @@ const Login = () => {
       <div className={styles['img-wrapper']}>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="NAH logo" width="150" />
       </div>
-      <Alert variant="danger" hidden={!showAlert}>Credenciales Incorrectas</Alert>
+      <Alert variant="danger" hidden={!showAlert}>{showAlert}</Alert>
       <Form className={styles.form}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Correo</Form.Label>
@@ -48,13 +48,13 @@ const Login = () => {
           <Form.Label>Contraseña</Form.Label>
           <Form.Control type="password" placeholder="Ingresa tu contraseña" onChange={({ target: { value } }) => setPassword(value)} />
         </Form.Group>
-        <Button className={styles.loginBtn} variant="warning" onClick={onLogin}>
-          Ingresar
+        <Button className={styles.registerBtn} variant="warning" onClick={onRegister}>
+          Registrarse
         </Button>
-        <p>No tienes una cuenta?<Button className={styles.registerBtn} variant="link" onClick={sendToRegister}>Registrate</Button></p>
+        <p>Ya tienes una cuenta?<Button className={styles.loginBtn} variant="link" onClick={sendToLogin}>Ingresa</Button></p>
       </Form>
     </div>
   )
 };
 
-export default Login;
+export default Register;

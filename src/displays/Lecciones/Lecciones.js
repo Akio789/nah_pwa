@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react'
 import styles from './Lecciones.module.css';
 import fontNAH from '../../assets/IMG_0635.png';
 import PropTypes from 'prop-types';
@@ -64,7 +63,7 @@ const Lecciones = () => {
   const [gramaticaLeccion, setGramaticaLeccion] = React.useState('')
   const [ejerciciosLeccion, setEjerciciosLeccion] = React.useState('');
 
-  const { user } = useAuth0();
+  const user = JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
     fetchLessonDescription().then((data) => {

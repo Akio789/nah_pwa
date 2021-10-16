@@ -1,12 +1,16 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom';
 
 const LogoutButton = ({ className }) => {
-  const { logout } = useAuth0();
+  const { push } = useHistory();
+  const logout = () => {
+    localStorage.removeItem('user');
+    push('/');
+  }
 
   return (
-    <Button className={className} onClick={() => logout({ returnTo: window.location.origin })}>
+    <Button className={className} onClick={logout}>
       Salir
     </Button>
   );
