@@ -13,11 +13,12 @@ import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import Lecciones from './displays/Lecciones/Lecciones';
 import TestAudio from './displays/TestAudio';
 import Dictionary from './displays/Dictionary/Dictionary';
+import Register from './displays/Register/Register';
 import { getLatestLesson } from './api/latestLesson';
 
 const App = () => {
   const [latestLesson, setLatestLesson] = useState(1);
-  const user = localStorage.getItem('user');
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     if (user) {
@@ -31,6 +32,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Login />
+        </Route>
+        <Route exact path="/register">
+          <Register />
         </Route>
         <>
           <Header latestLesson={latestLesson} />

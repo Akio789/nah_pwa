@@ -1,0 +1,21 @@
+.test {
+    color: blueviolet;
+}
+
+.wrapper {
+    height: 100vh;
+    padding-top: 100px;
+}
+
+.img-wrapper {
+    text-align: center;
+}
+
+.form {
+    padding: 0 5%;
+}
+
+.registerBtn {
+    margin: 1rem 0;
+    width: 100%;
+}
