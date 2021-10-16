@@ -9,7 +9,6 @@ import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import { fetchLessonDescription } from '../../api/fetchLessonDescription';
 import { useHistory } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
 import { saveLatestLesson } from '../../api/latestLesson';
 
 const Lessons = ({ latestLesson }) => {
@@ -17,7 +16,7 @@ const Lessons = ({ latestLesson }) => {
   const [lessonSteps, setLessonSteps] = useState([]);
   const [activeStep, setActiveStep] = useState(0);
   const { push } = useHistory();
-  const { user } = useAuth0();
+  const user = JSON.parse(localStorage.getItem('user'))
 
   useEffect(() => {
     fetchLessonDescription().then((data) => setLessonDescriptions(data));
