@@ -14,6 +14,8 @@ import Box from '@material-ui/core/Box';
 import { fetchLessonDescription } from '../../api/fetchLessonDescription';
 import { fetchLesson } from '../../api/fetchLesson';
 import { saveLatestLesson } from '../../api/latestLesson';
+import "bootstrap/dist/css/bootstrap.min.css";
+import FlipCard from '../../components/FlipCard/FlipCard';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,6 +51,7 @@ function a11yProps(index) {
 }
 
 
+
 const Lecciones = () => {
   const { latestLesson } = useParams();
 
@@ -61,7 +64,7 @@ const Lecciones = () => {
   const [resumenLeccion, setResumenLeccion] = React.useState('El sistema de escritura es variado entre las diversas formas que se han intentado para llevar el náhuatl hablado a la escritura. En este sistema se intentará tomar el sistema ortográfico ideado por la SEP para la alfabetización de la lengua. El nahualt, hace uso de 18 sonidos y todas las palabras llevarán el acento en la penúltima sílaba (graves) solo con fines didácticos en algunas palabras, sin embargo es importante recordar la entonación, pues en las lecciones posteriores no se utilizará.');
   const [vocabularioLeccion, setVocabularioLeccion] = React.useState('')
   const [gramaticaLeccion, setGramaticaLeccion] = React.useState('')
-  const [ejerciciosLeccion, setEjerciciosLeccion] = React.useState('');
+  const [ejerciciosLeccion, setEjerciciosLeccion] = React.useState([]);
 
   const user = JSON.parse(localStorage.getItem('user'))
 
@@ -76,6 +79,13 @@ const Lecciones = () => {
       setLecciones(data)
     })
   }, [selectedLessonId]);
+
+  useEffect(() => {
+    fetchLesson(selectedLessonId).then((data) => {
+      console.log(data.exercises)
+      setEjerciciosLeccion(data.exercises)
+    })
+  }, [selectedLessonId, lecciones]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -125,7 +135,15 @@ const Lecciones = () => {
         <div dangerouslySetInnerHTML={createMarkup(lecciones.grammar)} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-
+      <div className="container">
+      <div className="row h-100">
+        <div class="col d-flex flex-column flex-md-row justify-content-around align-items-center">
+          {ejerciciosLeccion.map((ejercicios) => (
+            <FlipCard key={ejercicios.id} exercise={ejercicios} />
+          ))}
+        </div>
+      </div>
+    </div>
       </TabPanel>
       <TabPanel value={value} index={3}>
         Ayuda
