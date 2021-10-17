@@ -82,8 +82,8 @@ const Lecciones = () => {
 
   useEffect(() => {
     fetchLesson(selectedLessonId).then((data) => {
-      console.log(data.exercises)
-      setEjerciciosLeccion(data.exercises)
+      setEjerciciosLeccion(data.exercises .map((obj) => { return {variant: 'click', ...obj}}))
+      console.log(ejerciciosLeccion)
     })
   }, [selectedLessonId, lecciones]);
 

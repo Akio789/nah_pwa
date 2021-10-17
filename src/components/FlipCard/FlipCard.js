@@ -7,8 +7,15 @@ function FlipCard({ exercise }) {
     const [showBack, setShowBack] = useState(false);
 
     function handleClick() {
-      if (exercise.variant === "click") {
+      if (exercise.variant === "click" && showBack ) {
         setShowBack(!showBack);
+        console.log("click uno");
+       setShowBack(false);
+      }
+      if (exercise.variant === "click" && !showBack) {
+        setShowBack(showBack);
+        console.log("click dos");
+        setShowBack(true);
       }
     }
   
