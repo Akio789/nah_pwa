@@ -29,6 +29,7 @@ const Header = () => {
                         <Nav.Link href="#link">Mapas</Nav.Link>
                         <Nav.Link href="#link">ML</Nav.Link>
                         <Nav.Link href="/dictionary">Diccionario</Nav.Link>
+                        <Nav.Link href="/about-us">Conoce al equipo</Nav.Link>
                     </Nav>
                     <Nav>
                         <LogoutButton />

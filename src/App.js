@@ -14,6 +14,7 @@ import Lecciones from './displays/Lecciones/Lecciones';
 import TestAudio from './displays/TestAudio';
 import Dictionary from './displays/Dictionary/Dictionary';
 import Register from './displays/Register/Register';
+import AboutUs from './displays/AboutUs/AboutUs';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <ProtectedRoute path='/codex/:id' component={Codex} />
           <ProtectedRoute path='/test' component={TestAudio} />
           <ProtectedRoute path='/dictionary' component={Dictionary} />
+          <ProtectedRoute path='/about-us' component={AboutUs} />
         </>
       </Switch>
     </Router>
