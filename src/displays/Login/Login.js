@@ -10,6 +10,11 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [showAlert, setShowAlert] = useState(false)
 
+  const isLoggedIn = JSON.parse(localStorage.getItem('user'))
+  if (!!isLoggedIn) {
+    push('/home')
+  }
+
   const setUser = (user) => {
     if (user === "Incorrect credentials") {
       setShowAlert(true);

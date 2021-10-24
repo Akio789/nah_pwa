@@ -10,6 +10,11 @@ const Register = () => {
   const [password, setPassword] = useState('')
   const [showAlert, setShowAlert] = useState(null)
 
+  const isLoggedIn = JSON.parse(localStorage.getItem('user'))
+  if (!!isLoggedIn) {
+    push('/home')
+  }
+
   const setUser = (user) => {
     if (user === "Email already in use") {
       setShowAlert('El correo ya está en uso');
