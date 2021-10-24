@@ -16,6 +16,7 @@ import Dictionary from './displays/Dictionary/Dictionary';
 import Register from './displays/Register/Register';
 import AboutUs from './displays/AboutUs/AboutUs';
 import Culture from './displays/Culture/Culture';
+import Maps from './displays/Maps/Maps';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           <ProtectedRoute path='/dictionary' component={Dictionary} />
           <ProtectedRoute path='/about-us' component={AboutUs} />
           <ProtectedRoute path='/culture' component={Culture} />
+          <ProtectedRoute path='/maps' component={Maps} />
         </>
       </Switch>
     </Router>
