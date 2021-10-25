@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCulture } from '../../api/fetchCulture';
+import styles from './Tales.module.css';
 
 
 const Tales = () => {
@@ -18,10 +19,7 @@ const Tales = () => {
   }
 
   return (
-    <div className='container'>
-      <h2 className='font-weight-bold'>{taleInfo.name}</h2>
-      <div dangerouslySetInnerHTML={createMarkup(taleInfo.lecture)} />
-    </div>
+      <div className={styles.styledtable} dangerouslySetInnerHTML={createMarkup(taleInfo.html)} />
   )
 };
 

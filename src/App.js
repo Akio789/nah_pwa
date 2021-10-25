@@ -37,7 +37,7 @@ const App = () => {
           <ProtectedRoute path='/dictionary' component={Dictionary} />
           <ProtectedRoute path='/about-us' component={AboutUs} />
           <ProtectedRoute path='/culture' component={Culture} />
-          <ProtectedRoute path='/culture/:id' component={Tales} />
+          <ProtectedRoute path='/cult/:id' component={Tales} />
         </>
       </Switch>
     </Router>

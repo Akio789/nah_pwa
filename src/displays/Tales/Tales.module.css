@@ -1,0 +1,41 @@
+.root{
+  flex-grow: 1;
+  width: 100%;
+  background-color: beige;
+}
+
+
+.wrapper{
+  width:200px;
+  padding:20px;
+  height: 150px;
+  }
+
+.styledtable {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1.8em !important;
+  min-width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styledtable thead tr {
+  background-color: #009879;
+  font-size: 1.8em !important;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styledtable tbody tr {
+  background-color: cornsilk;
+  border-radius: 5ch;
+  font-size: 1.8em !important;
+  border-bottom: 1px solid #dddddd;
+}
+
+.styledtable tbody tr li {
+  border-width: 1in;
+  font-size: 1.8em !important;
+  border-bottom: 1px solid #dddddd;
+}
