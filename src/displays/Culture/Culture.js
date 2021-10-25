@@ -38,7 +38,7 @@ const Culture = () => {
 
   const onSelectCulture = () => {
     const actualCulture = selectedCulture + 1;
-    push('/culture/' + actualCulture);
+    push('/cult/' + actualCulture);
   };
 
   const codexCarouselItems = allCodex.map((codex) => {
