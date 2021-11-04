@@ -16,7 +16,8 @@ import { fetchLesson } from '../../api/fetchLesson';
 import { saveLatestLesson } from '../../api/latestLesson';
 import "bootstrap/dist/css/bootstrap.min.css";
 import FlipCard from '../../components/FlipCard/FlipCard';
-
+import CardVocabulary from '../../components/CardVocabulary/CardVocabulary';
+import { fetchVocabulary } from '../../api/fetchVocabulary';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -54,7 +55,7 @@ function a11yProps(index) {
 
 const Lecciones = () => {
   const { latestLesson } = useParams();
-
+  const [allVocabulary, setAllVocabulary] = React.useState([]);
   // Variable que marca el index donde se encuentra actual el usuario.
   const [value, setValue] = React.useState(0);
   // Variables para vocabulario, gramática y ejercicios a cargar por lección.
@@ -67,6 +68,12 @@ const Lecciones = () => {
   const [ejerciciosLeccion, setEjerciciosLeccion] = React.useState([]);
 
   const user = JSON.parse(localStorage.getItem('user'))
+
+  useEffect(() => {
+    fetchVocabulary().then((data) => {
+      setAllVocabulary(data)
+    });
+  }, [selectedLessonId])
 
   useEffect(() => {
     fetchLessonDescription().then((data) => {
@@ -130,6 +137,19 @@ const Lecciones = () => {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
+      <div class="col d-flex flex-column flex-md-row justify-content-around align-items-center">
+      <table class="styledtable"  >
+                <thead>
+                <tr><td>Español</td><td>Náhuatl</td></tr>
+                </thead>
+                <tbody>
+                { allVocabulary.map((tuplas, i) => (
+                      <CardVocabulary key={i} grayBg={i % 2 === 1} tuplas={tuplas}>
+                      </CardVocabulary>
+                    )) }
+                </tbody>
+      </table>
+      </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div dangerouslySetInnerHTML={createMarkup(lecciones.grammar)} />
