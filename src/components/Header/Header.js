@@ -25,9 +25,6 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href={'/lecciones/' + latestLesson}>Lecciones</Nav.Link>
-                        <Nav.Link href="/culture">Cultura</Nav.Link>
-                        <Nav.Link href="/maps">Mapas</Nav.Link>
-                        <Nav.Link href="#link">ML</Nav.Link>
                         <Nav.Link href="/dictionary">Diccionario</Nav.Link>
                         <Nav.Link href="/about-us">Conoce al equipo</Nav.Link>
                     </Nav>
