@@ -3,35 +3,60 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import { fetchVocalecciones } from '../../api/fetchVocalecciones';
+import { fetchGlossary } from '../../api/fetchGlossary';
 import fontNAH from '../../assets/IMG_0635.png';
 import styles from './Home.module.css'
 import mexIMG from '../../assets/export3.png';
 import React, { useState, useEffect } from 'react';
 import Lessons from './Lessons';
 import { getLatestLesson } from '../../api/latestLesson';
+ import { Play } from 'react-bootstrap-icons';
 
 const Home = () => {
   const [latestLesson, setLatestLesson] = useState(1);
   const [vocaleccion, setVocaleccion] = useState('');
+  const [audio, setAudio] = useState('');
+  const [playAudio, setPlayAudio] = useState(false);
+  const min = 1;
+  const max = 50;
+  const rand = Math.floor(Math.random() * (max - min)) + min;
   const user = JSON.parse(localStorage.getItem('user'));
   useEffect(() => {
     if (user) {
       getLatestLesson(user.email)
         .then(({ latest_lesson }) => setLatestLesson(latest_lesson))
     }
+
   }, [user])
+  
+  if (playAudio) {
+    const audio_tp = new Audio(audio)
+    audio_tp.play();
+    setPlayAudio(false);
+  }
 
   const getVocaleccion = async () => {
-    const min = 1;
-    const max = 339;
-    const rand = Math.floor(Math.random() * (max - min)) + min;
-    const { data } = await fetchVocalecciones(rand)
-    setVocaleccion(data)
+  
+    fetchGlossary().then((glossary) => {
+      console.log(glossary)
+      const index  = (glossary.findIndex((obj) =>  
+      obj.id ==  rand 
+      ))
+      setVocaleccion(glossary[index]);
+      setAudio(glossary[index].audio_url);
+    })
   }
+  
+  const fetchAudioFile = async () => {
+      setPlayAudio(true);
+  }
+  
 
   useEffect(() => {
     getVocaleccion()
   }, [])
+
+  
 
   return (
     <div className={styles.home}>
@@ -46,6 +71,11 @@ const Home = () => {
           <p className={styles.cardSubtitle}>
             Adjetivo
           </p>
+          <div className={styles.floatright}>
+          <Button onClick={fetchAudioFile}>
+          <Play />
+          </Button>
+          </div>
           <h2>
             {vocaleccion.nahuatl}
             <br />
