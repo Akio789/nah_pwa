@@ -133,7 +133,6 @@ const Lecciones = () => {
           <Tab label="Vocabulario" className={styles.colorMenuLeccion} icon={<MenuBookIcon />} {...a11yProps(0)} />
           <Tab label="Gramática" className={styles.colorMenuLeccion} icon={<SpellcheckIcon />} {...a11yProps(1)} />
           <Tab label="Ejercicios" className={styles.colorMenuLeccion} icon={<BorderColorIcon />} {...a11yProps(2)} />
-          <Tab label="Ayuda" className={styles.colorMenuLeccion} icon={<HelpIcon />} {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -164,9 +163,6 @@ const Lecciones = () => {
         </div>
       </div>
     </div>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Ayuda
       </TabPanel>
     </div>
   );
