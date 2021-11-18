@@ -18,6 +18,7 @@ import AboutUs from './displays/AboutUs/AboutUs';
 import Culture from './displays/Culture/Culture';
 import Tales from './displays/Tales/Tales';
 import Maps from './displays/Maps/Maps';
+import ML from './displays/ML/ML';
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
           <ProtectedRoute path='/culture' component={Culture} />
           <ProtectedRoute path='/cult/:id' component={Tales} />
           <ProtectedRoute path='/maps' component={Maps} />
+          <ProtectedRoute path='/ml' component={ML} />
         </>
       </Switch>
     </Router>

@@ -1,0 +1,44 @@
+.test {
+    color: blueviolet;
+}
+
+.wrapper {
+    height: 100vh;
+    padding-top: 100px;
+    margin:0 auto;
+    display: flex;
+    justify-content: center;
+}
+.titlecard{
+    background-color: beige;
+}
+.img-wrapper {
+    text-align: center;
+}
+
+.form {
+    padding: 0 5%;
+}
+
+.loginBtn {
+    margin: 1rem 0;
+    width: 100%;
+}
+.centerImage{
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 80px;
+    
+}
+
+.leftImage{
+    text-align:left;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 50px;
+}
