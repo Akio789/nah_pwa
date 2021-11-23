@@ -27,17 +27,18 @@ const ML = () => {
         <h1 className="text-center"> RECONOCIMIENTO DE IMAGEN</h1>
       </div>
       <div className={styles.wrapper}>
-        <div>
-          <img id="target" src={image} alt="Placeholder"width="500" height="300"></img>
-          
-          <div>
+      <img id="target" src={image} alt="Placeholder"width="500" height="300"></img>
+      </div>
+      <div className={styles.wrapper2}>
+      <div>
           <label for="img">Seleccionar Imagen:</label>
+          <div>
             <input type="file" id="img" name="img" accept="image/*" onChange={onImageChange} className="filetype" id="group_image"></input>
             <Button  className={styles.registerBtn} onClick={checkImage}>Subir</Button>
           </div>
           <h2>Predicción: {prediction}</h2>
         </div>
-      </div>
+        </div>
     </div>
   )
 };
