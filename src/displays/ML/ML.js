@@ -9,14 +9,12 @@ const ML = () => {
   const [image, setImage] = useState(placeholder);
   const [file, setFile] = useState(false);
   const [prediction, setPrediction] = useState('');
-  var imageFile;
   const onImageChange = event => {
     setImage(URL.createObjectURL(event.target.files[0]));
     setFile(event.target.files[0]);
  }
   const checkImage = () => {
     const data = new FormData();
-    console.log(file);
     data.append('file',file);
     sendImage(data).then((data)=>{setPrediction(data.data.prediction)});
   }
@@ -34,7 +32,7 @@ const ML = () => {
           <label for="img">Seleccionar Imagen:</label>
           <div>
             <input type="file" id="img" name="img" accept="image/*" onChange={onImageChange} className="filetype" id="group_image"></input>
-            <Button  className={styles.registerBtn} onClick={checkImage}>Subir</Button>
+            <Button className={styles.btn} onClick={checkImage}>Subir</Button>
           </div>
           <h2>Predicción: {prediction}</h2>
         </div>
