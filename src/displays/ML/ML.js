@@ -1,23 +1,24 @@
 import placeholder from '../../assets/placeholder.jpg';
-import React, { useState } from 'react';
-import {Button} from 'react-bootstrap';
+import React, { useEffect,useState } from 'react';
+import {Button, Form} from 'react-bootstrap';
 import styles from './ML.module.css';
 import fontNAH from '../../assets/IMG_0635.png';
-
+import {sendImage} from '../../api/sendImage.js';
 
 const ML = () => {
-  
-  const onImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.setState({image: e.target.result});
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
-  
+  const [image, setImage] = useState(placeholder);
+  const [file, setFile] = useState(false);
+  const [prediction, setPrediction] = useState('');
+  var imageFile;
+  const onImageChange = event => {
+    setImage(URL.createObjectURL(event.target.files[0]));
+    setFile(event.target.files[0]);
+ }
   const checkImage = () => {
+    const data = new FormData();
+    console.log(file);
+    data.append('file',file);
+    sendImage(data).then((data)=>{setPrediction(data.data.prediction)});
   }
   return (
     <div>
@@ -27,12 +28,14 @@ const ML = () => {
       </div>
       <div className={styles.wrapper}>
         <div>
-          <img id="target" src={placeholder} alt="Placeholder"width="500" height="300"></img>
-          <form action="/action_page.php">
+          <img id="target" src={image} alt="Placeholder"width="500" height="300"></img>
+          
+          <div>
           <label for="img">Seleccionar Imagen:</label>
-          <input type="file" id="img" name="img" accept="image/*" onChange={onImageChange} className="filetype" id="group_image"></input>
-          <Button className={styles.registerBtn} onClick={checkImage}>Subir</Button>
-          </form>
+            <input type="file" id="img" name="img" accept="image/*" onChange={onImageChange} className="filetype" id="group_image"></input>
+            <Button  className={styles.registerBtn} onClick={checkImage}>Subir</Button>
+          </div>
+          <h2>Predicción: {prediction}</h2>
         </div>
       </div>
     </div>
