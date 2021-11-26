@@ -6,7 +6,7 @@ const AboutUs = () => {
     <div className="container">
       <br />
       <p align="center" className={styles.class3}>
-        Acerca de [NAH]
+        Acerca de [NAH] (<strong>Version WebApp Mobile First</strong>)
         Esta aplicación fue hecha con el motivo de ayudar a
         los aprendices de Náhuatl a interiorizar mejor los
         aspectos de gramática, por medio de vocabulario,
@@ -15,6 +15,18 @@ const AboutUs = () => {
         estudiante no solo dominar la lengua, sino conocer
         aspectos de la cosmovisión de nuestra gente macehualli.
 
+      </p>
+      <br />
+      <hr size="5" color="gold" />
+      <br />
+      <p align="center" className={styles.class2}>
+        Profesor: José Martín Molina Espinosa
+      </p>
+      <p align="center" className={styles.class2}>
+        Materia: Proyecto integrador para el desarrollo de soluciones empresariales
+      </p>
+      <p align="center" className={styles.class2}>
+        Periodo: Agosto - Diciembre 2021
       </p>
       <br />
       <hr size="5" color="gold" />
